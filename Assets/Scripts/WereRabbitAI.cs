@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WereRabbitAI : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class WereRabbitAI : MonoBehaviour
     private SpriteRenderer sprite;
     private Transform target;
     [SerializeField] private Transform detectionRange;
+    [HideInInspector] public bool caught = false;
     
     void Start()
     {
@@ -123,11 +125,17 @@ public class WereRabbitAI : MonoBehaviour
                 ResetPatrol();
             }
         }
+        
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.transform == target) ResetPatrol();
     }
-    
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }
