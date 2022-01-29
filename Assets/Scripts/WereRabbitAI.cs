@@ -74,6 +74,7 @@ public class WereRabbitAI : MonoBehaviour
 
     private void Patrol()
     {
+        if (caught) return;
         rb.velocity = Vector2.MoveTowards(Vector2.zero, patrolRoute[currentRouteId] - new Vector2(transform.position.x, transform.position.y), moveSpeed * Time.deltaTime) / Time.deltaTime;
         lookDirection = rb.velocity.normalized;
         sprite.flipX = lookDirection.x > 0.0F;
@@ -86,6 +87,7 @@ public class WereRabbitAI : MonoBehaviour
 
     private void Chase()
     {
+        if (caught) return;
         rb.velocity = Vector2.MoveTowards(Vector2.zero, target.position - transform.position, moveSpeed * chaseSpeedMultiplier * Time.deltaTime) / Time.deltaTime;
         lookDirection = rb.velocity.normalized;
         sprite.flipX = lookDirection.x > 0.0F;
@@ -112,7 +114,7 @@ public class WereRabbitAI : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") || other.GetComponent<HoldableItem>() != null)
         {
             if (!Physics2D.Raycast(transform.position, other.transform.position - transform.position, (other.transform.position - transform.position).magnitude, viewMask))
             {

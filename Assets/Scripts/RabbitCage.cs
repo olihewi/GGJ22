@@ -47,7 +47,7 @@ public class RabbitCage : Triggerable
     {
         if (other.GetComponent<WereRabbitAI>() is WereRabbitAI rabbit)
         {
-            rabbit.enabled = false;
+            rabbit.caught = true;
             caughtRabbit = true;
         }
     }
