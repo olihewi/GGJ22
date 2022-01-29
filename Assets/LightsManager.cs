@@ -8,6 +8,7 @@ public class LightsManager : MonoBehaviour
     public List<GameObject> lights;
     public List<GameObject> objectsToTrack;
     int index = 0;
+    int objCount = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,5 +42,6 @@ public class LightsManager : MonoBehaviour
             }
         }
         index = 0;
+
     }
 }
