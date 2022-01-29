@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 0be743cef8fbeca43b9f34a73a2b7f55
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Beverley
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: f126a113805a4cb4a99ddcf74ae90c14, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
