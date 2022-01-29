@@ -7,6 +7,7 @@ public class LightsManager : MonoBehaviour
 {
     public List<GameObject> lights;
     public List<GameObject> objectsToTrack;
+    int numberOfLights;
     int index = 0;
     int objCount = 0;
     // Start is called before the first frame update
@@ -20,19 +21,29 @@ public class LightsManager : MonoBehaviour
     {
         foreach (var light in lights)
         {
+
             foreach (var obj in objectsToTrack)
             {
-                if(Vector2.Distance(obj.transform.position, light.transform.position) <= light.GetComponent<Light2D>().pointLightOuterRadius)
+
+                if (Vector2.Distance(obj.transform.position, light.transform.position) <= light.GetComponent<Light2D>().pointLightOuterRadius)
                 {
                     if(light.GetComponent<LightHitObject>().objectToTrack.Count == 0)
                     {
                         light.GetComponent<LightHitObject>().objectToTrack.Add(obj);
                     }
-                    else if(light.GetComponent<LightHitObject>().objectToTrack.Count > 0 && light.GetComponent<LightHitObject>().objectToTrack[index] != obj)
+                    else if(light.GetComponent<LightHitObject>().objectToTrack.Count > 0 && index < light.GetComponent<LightHitObject>().objectToTrack.Count)
                     {
-                        light.GetComponent<LightHitObject>().objectToTrack.Add(obj);
+                        if(light.GetComponent<LightHitObject>().objectToTrack[index] != obj)
+                        {
+                            light.GetComponent<LightHitObject>().objectToTrack.Add(obj);
+                        }
+                        
                     }
-                    index++;
+                    if(index < light.GetComponent<LightHitObject>().objectToTrack.Count)
+                    {
+                        index++;
+                    }
+                    
                     
                 }
                 else
@@ -42,6 +53,9 @@ public class LightsManager : MonoBehaviour
             }
         }
         index = 0;
+
+
+
 
     }
 }

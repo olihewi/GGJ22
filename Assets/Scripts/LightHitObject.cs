@@ -10,11 +10,31 @@ public class LightHitObject : MonoBehaviour
     float cornerNumber = 2.6f;
     public float minAngle;
     public float maxAngle;
+    public bool objectPresent;
+    public enum Direction {LEFT, RIGHT, UP, DOWN};
+    public Direction direction;
 
     // Start is called before the first frame update
     void Start()
     {
         Vector3 dir = -transform.up;
+        switch (direction)
+        {
+            case (Direction.DOWN):
+                dir = -transform.up;
+                break;
+            case (Direction.UP):
+                dir = transform.up;
+                break;
+            case (Direction.RIGHT):
+                dir = transform.right;
+                break;
+            case (Direction.LEFT):
+                dir = -transform.right;
+                break;
+        }
+
+        
         dir = transform.InverseTransformDirection(dir);
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         Debug.Log(angle);
@@ -25,6 +45,8 @@ public class LightHitObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
         foreach (var obj in objectToTrack)
         {
 
@@ -57,11 +79,19 @@ public class LightHitObject : MonoBehaviour
                 if (((hitBottomLeft.collider == obj.GetComponent<Collider2D>() || hitBottomRight.collider == obj.GetComponent<Collider2D>()) || (hitTopLeft.collider == obj.GetComponent<Collider2D>()
                     || hitTopRight.collider == obj.GetComponent<Collider2D>())) && ((angle >= minAngle && angle <= maxAngle)))
                 {
-                    InLight(obj);
+                    if (obj.GetComponent<ObjectInLight>())
+                    {
+                        obj.GetComponent<ObjectInLight>().isInLight = true;
+                        obj.GetComponent<ObjectInLight>().lightSource = gameObject;
+                    }
                 }
                 else
                 {
-                    InShade(obj);
+                    if (obj.GetComponent<ObjectInLight>())
+                    {
+                        obj.GetComponent<ObjectInLight>().isInLight = false;
+                        obj.GetComponent<ObjectInLight>().lightSource = gameObject;
+                    }
                 }
             }
 
@@ -73,11 +103,13 @@ public class LightHitObject : MonoBehaviour
     void InLight(GameObject obj)
     {
         Debug.Log(obj.name + " is being hit by light, call function to alter state");
+        objectPresent = true;
     }
 
     void InShade(GameObject obj)
     {
         Debug.Log(obj.name + " is in the shade, call function to alter state");
+        objectPresent = true;
     }
 
     private void OnDrawGizmos()
