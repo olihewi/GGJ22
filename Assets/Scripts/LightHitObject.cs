@@ -5,6 +5,7 @@ using UnityEngine.Experimental.Rendering.Universal;
 
 public class LightHitObject : MonoBehaviour
 {
+    
     public List<GameObject> objectToTrack;
     float cornerNumber = 2.6f;
     public float minAngle;
@@ -39,26 +40,29 @@ public class LightHitObject : MonoBehaviour
             float dist = Vector2.Distance(transform.position, obj.transform.position);
 
             //Debug.Log(dist);
-
-            RaycastHit2D hitTopLeft = Physics2D.Raycast(transform.position, topLeftDir, dist);
-            RaycastHit2D hitTopRight = Physics2D.Raycast(transform.position, topRightDir, dist);
-            RaycastHit2D hitBottomLeft = Physics2D.Raycast(transform.position, bottomLeftDir, dist);
-            RaycastHit2D hitBottomRight = Physics2D.Raycast(transform.position, bottomRightDir, dist);
-
-
-            //if((angle >= minAngle && angle <= maxAngle) && (dist <= GetComponent<Light2D>().pointLightOuterRadius))
-            //{
-            //    Debug.Log("help");
-            //}
-
-            if (((hitBottomLeft.collider == obj.GetComponent<Collider2D>() || hitBottomRight.collider == obj.GetComponent<Collider2D>()) || (hitTopLeft.collider == obj.GetComponent<Collider2D>()
-                || hitTopRight.collider == obj.GetComponent<Collider2D>())) && ((angle >= minAngle && angle <= maxAngle) && (dist <= GetComponent<Light2D>().pointLightOuterRadius)))
+            if(dist <= GetComponent<Light2D>().pointLightOuterRadius)
             {
-                Debug.Log(obj.name + " is being hit by light, call function to alter state");
-            }
-            else
-            {
-                Debug.Log(obj.name + " is in the shade, call function to alter state");
+                RaycastHit2D hitTopLeft = Physics2D.Raycast(transform.position, topLeftDir, dist);
+                RaycastHit2D hitTopRight = Physics2D.Raycast(transform.position, topRightDir, dist);
+                RaycastHit2D hitBottomLeft = Physics2D.Raycast(transform.position, bottomLeftDir, dist);
+                RaycastHit2D hitBottomRight = Physics2D.Raycast(transform.position, bottomRightDir, dist);
+
+
+                //if((angle >= minAngle && angle <= maxAngle) && (dist <= GetComponent<Light2D>().pointLightOuterRadius))
+                //{
+                //    Debug.Log("help");
+                //}
+
+
+                if (((hitBottomLeft.collider == obj.GetComponent<Collider2D>() || hitBottomRight.collider == obj.GetComponent<Collider2D>()) || (hitTopLeft.collider == obj.GetComponent<Collider2D>()
+                    || hitTopRight.collider == obj.GetComponent<Collider2D>())) && ((angle >= minAngle && angle <= maxAngle)))
+                {
+                    InLight(obj);
+                }
+                else
+                {
+                    InShade(obj);
+                }
             }
 
 
@@ -66,15 +70,29 @@ public class LightHitObject : MonoBehaviour
         }
     }
 
+    void InLight(GameObject obj)
+    {
+        Debug.Log(obj.name + " is being hit by light, call function to alter state");
+    }
+
+    void InShade(GameObject obj)
+    {
+        Debug.Log(obj.name + " is in the shade, call function to alter state");
+    }
+
     private void OnDrawGizmos()
     {
-        Vector2 topLeftDir = -(transform.position - new Vector3(objectToTrack[0].transform.position.x - objectToTrack[0].transform.localScale.x / cornerNumber, objectToTrack[0].transform.position.y + objectToTrack[0].transform.localScale.y / cornerNumber));
-        Vector2 topRightDir = -(transform.position - new Vector3(objectToTrack[0].transform.position.x + objectToTrack[0].transform.localScale.x / cornerNumber, objectToTrack[0].transform.position.y + objectToTrack[0].transform.localScale.y / cornerNumber));
-        Vector2 bottomLeftDir = -(transform.position - new Vector3(objectToTrack[0].transform.position.x - objectToTrack[0].transform.localScale.x / cornerNumber, objectToTrack[0].transform.position.y - objectToTrack[0].transform.localScale.y / cornerNumber));
-        Vector2 bottomRightDir = -(transform.position - new Vector3(objectToTrack[0].transform.position.x + objectToTrack[0].transform.localScale.x / cornerNumber, objectToTrack[0].transform.position.y - objectToTrack[0].transform.localScale.y / cornerNumber));
-        Debug.DrawRay(transform.position, topLeftDir);
-        Debug.DrawRay(transform.position, topRightDir);
-        Debug.DrawRay(transform.position, bottomLeftDir);
-        Debug.DrawRay(transform.position, bottomRightDir);
+        if(objectToTrack.Count > 0)
+        {
+            Vector2 topLeftDir = -(transform.position - new Vector3(objectToTrack[0].transform.position.x - objectToTrack[0].transform.localScale.x / cornerNumber, objectToTrack[0].transform.position.y + objectToTrack[0].transform.localScale.y / cornerNumber));
+            Vector2 topRightDir = -(transform.position - new Vector3(objectToTrack[0].transform.position.x + objectToTrack[0].transform.localScale.x / cornerNumber, objectToTrack[0].transform.position.y + objectToTrack[0].transform.localScale.y / cornerNumber));
+            Vector2 bottomLeftDir = -(transform.position - new Vector3(objectToTrack[0].transform.position.x - objectToTrack[0].transform.localScale.x / cornerNumber, objectToTrack[0].transform.position.y - objectToTrack[0].transform.localScale.y / cornerNumber));
+            Vector2 bottomRightDir = -(transform.position - new Vector3(objectToTrack[0].transform.position.x + objectToTrack[0].transform.localScale.x / cornerNumber, objectToTrack[0].transform.position.y - objectToTrack[0].transform.localScale.y / cornerNumber));
+            Debug.DrawRay(transform.position, topLeftDir);
+            Debug.DrawRay(transform.position, topRightDir);
+            Debug.DrawRay(transform.position, bottomLeftDir);
+            Debug.DrawRay(transform.position, bottomRightDir);
+        }
+
     }
 }
