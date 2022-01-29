@@ -6,18 +6,18 @@ public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 10.0f;
     public Camera playerCam;
+    private Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 dir = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized * Time.deltaTime * moveSpeed;
-        this.gameObject.transform.Translate(dir);
-        Debug.Log(dir);
+        Vector2 dir = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical") ).normalized * moveSpeed;
+        rb.velocity = dir;
     }
 }
