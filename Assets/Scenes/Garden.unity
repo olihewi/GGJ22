@@ -12238,36 +12238,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 0c4b37335e23aab479370c2ffcc42e90, type: 3}
---- !u!1 &1790711198 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7695027170417659553, guid: 28ade2646bae162418d91458c8e750ea, type: 3}
-  m_PrefabInstance: {fileID: 1828415973}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1790711199
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1790711198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  Event: event:/NPC/Rabbit
-  PlayEvent: 1
-  StopEvent: 2
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 0.3
-  OverrideMaxDistance: 3.8
---- !u!4 &1792221505 stripped
+  m_SourcePrefab: {fileID: 100100000, guid: eff1f3fd8f26c6e43ba7ef44a36949b3, type: 3}
+--- !u!4 &1805323378 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4166440884904252327, guid: 0c4b37335e23aab479370c2ffcc42e90, type: 3}
   m_PrefabInstance: {fileID: 902485886}
@@ -12476,6 +12448,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28ade2646bae162418d91458c8e750ea, type: 3}
+--- !u!1 &1828415974 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7695027170417659553, guid: 28ade2646bae162418d91458c8e750ea, type: 3}
+  m_PrefabInstance: {fileID: 1828415973}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1828415975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1828415974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/NPC/Rabbit
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0.3
+  OverrideMaxDistance: 3.8
 --- !u!1001 &1839185511
 PrefabInstance:
   m_ObjectHideFlags: 0
