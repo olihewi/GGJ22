@@ -331,6 +331,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6346fbc83eaa45c4da3852408598d967, type: 3}
+--- !u!1 &120898743 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7213226883827708675, guid: 6346fbc83eaa45c4da3852408598d967, type: 3}
+  m_PrefabInstance: {fileID: 120898742}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &120898744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 120898743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55c003a89841545ac806fc6935758234, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputSound: event:/Player/FootstepsGrass
+  walkingSpeed: 0.5
 --- !u!1001 &131516731
 PrefabInstance:
   m_ObjectHideFlags: 0
