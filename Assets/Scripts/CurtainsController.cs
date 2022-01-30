@@ -33,12 +33,15 @@ public class CurtainsController : MonoBehaviour
         
         CurrentRGBA = PlayerRGBA;
     }
+    void initPlayer(Collider2D collision)
+    {
+        Player = collision.gameObject;
+        PlayerRenderers = Player.GetComponentsInChildren<Renderer>();
+    }
 
     // Update is called once per frame
     void Update()
     {
-        
-
         if (CurtainsOpen.activeInHierarchy && isOccupied)
         {
             burning = true;
@@ -52,8 +55,6 @@ public class CurtainsController : MonoBehaviour
             CurrentRGBA = /*Color.Lerp(CurrentRGBA, PlayerRGBA, Time.deltaTime * .01f)*/ Color.white;
 
         }
-
-        
 
         if (burning && count == 0)
         {
@@ -117,6 +118,25 @@ public class CurtainsController : MonoBehaviour
         count = 0;
         StopCoroutine(Burning());
     }
+    IEnumerator OpenAndCloseCurtains()
+    {
+        while (true)
+        {
+            if (flipped)
+            {
+                yield return new WaitForSeconds(OpenFor);
+            }
+            else
+            {
+                yield return new WaitForSeconds(ClosedFor);
+            }
+
+
+            //Debug.Log("Ding " + count);
+            //count++;
+            SwitchCurtains();
+        }
+    }
 
     void SwitchCurtains()
     {
@@ -132,28 +152,10 @@ public class CurtainsController : MonoBehaviour
             CurtainsClosed.SetActive(true);
             burning = false;
         }
+
         flipped = !flipped;
     }
 
-    IEnumerator OpenAndCloseCurtains()
-    {
-        while (true)
-        {
-            if (flipped)
-            {
-                yield return new WaitForSeconds(OpenFor);
-            }
-            else
-            {
-                yield return new WaitForSeconds(ClosedFor);
-            }
-            
-            
-            //Debug.Log("Ding " + count);
-            //count++;
-            SwitchCurtains();
-        }
-    }
     IEnumerator Burning()
     {
 
@@ -170,11 +172,8 @@ public class CurtainsController : MonoBehaviour
             yield return null;
         }
     }
-    void initPlayer(Collider2D collision)
-    {
-        Player = collision.gameObject;
-        PlayerRenderers = Player.GetComponentsInChildren<Renderer>();
-    }
+
+
     void removePlayer()
     {
         for (int i = 0; i < PlayerRenderers.Length; i++)
