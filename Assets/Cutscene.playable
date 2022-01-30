@@ -566,7 +566,7 @@ AnimationClip:
   m_Events:
   - time: 0
     functionName: set_text
-    data: What?! My pets have escaped
+    data: What?! My pets have escaped. I want to go to bed but...
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
