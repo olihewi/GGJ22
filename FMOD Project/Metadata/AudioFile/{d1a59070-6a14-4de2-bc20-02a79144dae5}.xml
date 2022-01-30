@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{d1a59070-6a14-4de2-bc20-02a79144dae5}">
+		<property name="assetPath">
+			<value>CatScratch_2.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>0.16666666666666666</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{76b69ae3-03eb-4a06-86ec-74d3fe4be6cb}</destination>
+		</relationship>
+	</object>
+</objects>

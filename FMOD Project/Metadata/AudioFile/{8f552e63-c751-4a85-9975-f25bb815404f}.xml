@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{8f552e63-c751-4a85-9975-f25bb815404f}">
+		<property name="assetPath">
+			<value>Bookshelf3.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>1.1788888888888889</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{76b69ae3-03eb-4a06-86ec-74d3fe4be6cb}</destination>
+		</relationship>
+	</object>
+</objects>
