@@ -6,13 +6,17 @@ using UnityEngine;
 public class RabbitCage : Triggerable
 {
     private Vector3 startPos;
-    private BoxCollider2D boxCollider;
+    private BoxCollider2D[] boxColliders;
     public bool caughtRabbit = false;
+    public GameObject door;
 
     private void Start()
     {
-        boxCollider = GetComponent<BoxCollider2D>();
-        boxCollider.enabled = false;
+        boxColliders = GetComponents<BoxCollider2D>();
+        foreach (BoxCollider2D boxCollider in boxColliders)
+        {
+            boxCollider.enabled = false;
+        }
         startPos = transform.position;
     }
 
@@ -20,14 +24,20 @@ public class RabbitCage : Triggerable
     {
         if (caughtRabbit) return;
         StartCoroutine(MoveTo(startPos + Vector3.back, 0.25F));
-        boxCollider.enabled = true;
+        foreach (BoxCollider2D boxCollider in boxColliders)
+        {
+            boxCollider.enabled = true;
+        }
     }
 
     public override void Finished()
     {
         if (caughtRabbit) return;
         StartCoroutine(MoveTo(startPos + Vector3.forward, 0.25F));
-        boxCollider.enabled = false;
+        foreach (BoxCollider2D boxCollider in boxColliders)
+        {
+            boxCollider.enabled = false;
+        }
     }
 
     private IEnumerator MoveTo(Vector3 position, float _time)
@@ -49,6 +59,7 @@ public class RabbitCage : Triggerable
         {
             rabbit.caught = true;
             caughtRabbit = true;
+            door.SetActive(false);
         }
     }
 }
