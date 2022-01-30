@@ -275,7 +275,7 @@ PlayableDirector:
   m_GameObject: {fileID: 639930983}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: a26b9e9a5c2a81e48904c3d068d41b59, type: 2}
+  m_PlayableAsset: {fileID: 11400000, guid: 64be5b3d1c064e6409cce4c3c369e9a0, type: 2}
   m_InitialState: 1
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
@@ -287,6 +287,14 @@ PlayableDirector:
     value: {fileID: 1089974614}
   - key: {fileID: 5772066982053335918, guid: a26b9e9a5c2a81e48904c3d068d41b59, type: 2}
     value: {fileID: 639930987}
+  - key: {fileID: -8127994514315484484, guid: 64be5b3d1c064e6409cce4c3c369e9a0, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 6303182529996815014, guid: 64be5b3d1c064e6409cce4c3c369e9a0, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 733744361470454375, guid: 64be5b3d1c064e6409cce4c3c369e9a0, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -4136187294748148080, guid: 64be5b3d1c064e6409cce4c3c369e9a0, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &639930985
@@ -1009,7 +1017,7 @@ SpriteRenderer:
   m_Size: {x: 20.48, y: 20.48}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &2103903241
