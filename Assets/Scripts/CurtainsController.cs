@@ -24,7 +24,15 @@ public class CurtainsController : MonoBehaviour
     public bool burning;
 
     public int count;
-    private bool flipped;
+    public bool flipped;
+    //private CurtainTrig curtainTrig;
+
+    // Abi's Spaghetti code 1/3
+    [FMODUnity.EventRef]
+    public string inputSound1, inputSound2;
+    bool curtainOpen;
+    bool curtainClose;
+
     // Start is called before the first frame update
     void OnEnable()
     {
@@ -125,10 +133,12 @@ public class CurtainsController : MonoBehaviour
             if (flipped)
             {
                 yield return new WaitForSeconds(OpenFor);
+                
             }
             else
             {
                 yield return new WaitForSeconds(ClosedFor);
+                
             }
 
 
@@ -144,13 +154,14 @@ public class CurtainsController : MonoBehaviour
         {
             CurtainsOpen.SetActive(true);
             CurtainsClosed.SetActive(false);
-
+            FMODUnity.RuntimeManager.PlayOneShotAttached(inputSound1, gameObject);
         }
         if (flipped)
         {
             CurtainsOpen.SetActive(false);
             CurtainsClosed.SetActive(true);
             burning = false;
+            FMODUnity.RuntimeManager.PlayOneShotAttached(inputSound2, gameObject); // Abi's Spaghetti code 3/3
         }
 
         flipped = !flipped;

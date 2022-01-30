@@ -658,6 +658,9 @@ MonoBehaviour:
   isOccupied: 0
   burning: 0
   count: 0
+  flipped: 0
+  inputSound1: event:/Levels/CurtainsOpen
+  inputSound2: event:/Levels/CurtainsClose
 --- !u!61 &1661715583555310733
 BoxCollider2D:
   m_ObjectHideFlags: 0
