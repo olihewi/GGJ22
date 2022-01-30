@@ -5,22 +5,19 @@ using UnityEngine.Tilemaps;
 
 public class SlidingBlock : MonoBehaviour
 {
-    public Tilemap tilemap;
-    public Vector3Int tileLocation;
     bool canMove = true;
     float moveCooldown = 2.0f;
+    public Vector2 moveVector = new Vector2(0, 0);
+
     // Start is called before the first frame update
     void Start()
     {
-        GameObject tilemapObj = GameObject.FindGameObjectWithTag("TileMap");
-        tilemap = tilemapObj.GetComponent<Tilemap>();
+   
     }
 
     // Update is called once per frame
     void Update()
     {
-
-
         if (!canMove)
         {
 
@@ -38,25 +35,23 @@ public class SlidingBlock : MonoBehaviour
         Debug.Log("Bump");
         ContactPoint2D contactPoint = collision.contacts[0];
 
-        Vector2 moveVector;
+        Vector2 moveVector = new Vector2(0,0);
 
         if (canMove)
         {
+            
             Vector2 toOther = transform.position - collision.transform.position;
 
             canMove = false;
-            if (Vector2.Dot(Vector2.up, toOther) < 0)
+
+            float angle = Vector2.SignedAngle(contactPoint.normal, Vector2.up);
+            Debug.Log(angle);
+            if(angle == 0)
             {
-                if (contactPoint.point.x > this.transform.position.x)
-                {
-                    moveVector = new Vector2(-1, 0);
-                }
-                else
-                {
-                    moveVector = new Vector2(1, 0);
-                }
+                moveVector = new Vector2(0,1);
 
                 RaycastHit2D hit = Physics2D.Raycast(transform.position, moveVector, 1);
+                Debug.DrawRay(transform.position, moveVector * 5);
 
                 if (hit.collider)
                 {
@@ -68,18 +63,12 @@ public class SlidingBlock : MonoBehaviour
                     this.transform.Translate(moveVector);
                 }
             }
-            else if (Vector2.Dot(Vector2.right, toOther) < 0)
+            else if (angle == 180)
             {
-                if (contactPoint.point.y > this.transform.position.y)
-                {
-                    moveVector = new Vector2(0, -1);
-                }
-                else
-                {
-                    moveVector = new Vector2(0, 1);
-                }
+                moveVector = new Vector2(0, -1);
 
                 RaycastHit2D hit = Physics2D.Raycast(transform.position, moveVector, 1);
+                Debug.DrawRay(transform.position, moveVector * 5);
 
                 if (hit.collider)
                 {
@@ -91,10 +80,40 @@ public class SlidingBlock : MonoBehaviour
                     this.transform.Translate(moveVector);
                 }
             }
+            else if(angle == 90)
+            {
+                moveVector = new Vector2(1, 0);
 
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, moveVector, 1);
+                Debug.DrawRay(transform.position, moveVector * 5);
 
+                if (hit.collider)
+                {
+                    Debug.Log("In the way");
+                }
+                else
+                {
+                    Debug.Log("Moved");
+                    this.transform.Translate(moveVector);
+                }
+            }
+            else if (angle == -90)
+            {
+                moveVector = new Vector2(-1,0);
 
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, moveVector, 1);
+                Debug.DrawRay(transform.position, moveVector * 5);
 
+                if (hit.collider)
+                {
+                    Debug.Log("In the way");
+                }
+                else
+                {
+                    Debug.Log("Moved");
+                    this.transform.Translate(moveVector);
+                }
+            }
         }
     }
 }
