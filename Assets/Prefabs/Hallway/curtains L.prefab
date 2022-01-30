@@ -300,7 +300,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5e032dddcef16ed4da11fb0f82eb6116, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2db1beb667304f94493e755585ab4637, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -645,9 +645,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurtainsOpen: {fileID: 511401866424497443}
   CurtainsClosed: {fileID: 511401866565238675}
-  lightCollider: {fileID: 0}
   Player: {fileID: 0}
   PlayerRenderers: []
+  respawn: {fileID: 0}
+  InitialDelay: 30
+  OpenFor: 3
+  ClosedFor: 3
+  BurnSpeed: 2.3
   PlayerRGBA: {x: 255, y: 255, z: 255, w: 255}
   BurningRGBA: {x: 255, y: 165, z: 0, w: 255}
   CurrentRGBA: {x: 0, y: 0, z: 0, w: 0}

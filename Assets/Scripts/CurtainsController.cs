@@ -11,7 +11,7 @@ public class CurtainsController : MonoBehaviour
     public Renderer[] PlayerRenderers;
     public GameObject respawn;
 
-    [Range(0f, 5f)]     public float InitialDelay = 30f;
+    [Range(0f, 30f)]    public float InitialDelay = 0f;
     [Range(1f,5f)]      public float OpenFor = 3f;
     [Range(1f, 5f)]     public float ClosedFor = 3f;
     [Range(.5f, 4f)]    public float BurnSpeed = 2.3f;
@@ -28,8 +28,8 @@ public class CurtainsController : MonoBehaviour
     // Start is called before the first frame update
     void OnEnable()
     {
-       
-        StartCoroutine(OpenAndCloseCurtains());
+        StartCoroutine(InitialDelayCoroutine());
+        
         
         CurrentRGBA = PlayerRGBA;
     }
@@ -45,7 +45,7 @@ public class CurtainsController : MonoBehaviour
         if (CurtainsOpen.activeInHierarchy && isOccupied)
         {
             burning = true;
-            CurrentRGBA = Color.Lerp(CurrentRGBA, BurningRGBA, Time.deltaTime * .001f);
+            CurrentRGBA = Color.Lerp(CurrentRGBA, BurningRGBA, Time.deltaTime * (BurnSpeed *.1F));
             
         }
 
@@ -172,7 +172,11 @@ public class CurtainsController : MonoBehaviour
             yield return null;
         }
     }
-
+    IEnumerator InitialDelayCoroutine()
+    {
+        yield return new WaitForSeconds(InitialDelay);
+        StartCoroutine(OpenAndCloseCurtains());
+    }
 
     void removePlayer()
     {
