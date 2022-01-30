@@ -24,13 +24,13 @@ public class HoldableItem : MonoBehaviour
             if (Input.GetButtonDown("Jump"))
             {
                 held = true;
-                transform.parent = PlayerMovement.INSTANCE.GetComponentInChildren<SpriteRenderer>().transform;
-                transform.localPosition = Vector3.up;
+                transform.parent = PlayerMovement.INSTANCE.transform;
+                transform.localPosition = Vector3.back;
             }
         }
         else if (held && Input.GetButtonDown("Jump"))
         {
-            transform.localPosition -= Vector3.up;
+            transform.localPosition -= Vector3.back;
             transform.parent = null;
             held = false;
         }
