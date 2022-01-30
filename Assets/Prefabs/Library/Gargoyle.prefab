@@ -123,8 +123,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04bf393e65a1ec64f95ab7dee195177c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilemap: {fileID: 0}
-  tileLocation: {x: 0, y: 0, z: 0}
+  moveVector: {x: 0, y: 0}
+  BookshelfSound: event:/Levels/Bookshelf
 --- !u!1 &4400424557571652270
 GameObject:
   m_ObjectHideFlags: 0

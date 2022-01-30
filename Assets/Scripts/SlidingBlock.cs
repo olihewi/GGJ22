@@ -9,6 +9,11 @@ public class SlidingBlock : MonoBehaviour
     float moveCooldown = 2.0f;
     public Vector2 moveVector = new Vector2(0, 0);
 
+    // Abi's Spaghetti code 1/3
+    [FMODUnity.EventRef]
+    public string BookshelfSound;
+  
+
     // Start is called before the first frame update
     void Start()
     {
@@ -61,8 +66,10 @@ public class SlidingBlock : MonoBehaviour
                 {
                     Debug.Log("Moved");
                     this.transform.Translate(moveVector);
+                    FMODUnity.RuntimeManager.PlayOneShot(BookshelfSound);
                 }
             }
+            
             else if (angle == 180)
             {
                 moveVector = new Vector2(0, -1);
@@ -78,7 +85,8 @@ public class SlidingBlock : MonoBehaviour
                 {
                     Debug.Log("Moved");
                     this.transform.Translate(moveVector);
-                }
+                FMODUnity.RuntimeManager.PlayOneShot(BookshelfSound);
+            }
             }
             else if(angle == 90)
             {
@@ -95,7 +103,8 @@ public class SlidingBlock : MonoBehaviour
                 {
                     Debug.Log("Moved");
                     this.transform.Translate(moveVector);
-                }
+                FMODUnity.RuntimeManager.PlayOneShot(BookshelfSound);
+            }
             }
             else if (angle == -90)
             {
@@ -112,6 +121,7 @@ public class SlidingBlock : MonoBehaviour
                 {
                     Debug.Log("Moved");
                     this.transform.Translate(moveVector);
+                    FMODUnity.RuntimeManager.PlayOneShot(BookshelfSound);
                 }
             }
         }

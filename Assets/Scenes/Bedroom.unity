@@ -128,6 +128,26 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2894229066911275530, guid: 83c2364e1d678e040a0642c25562fc28, type: 3}
   m_PrefabInstance: {fileID: 611102803}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &18875439 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6906851962522974915, guid: 83992cf4b8ad73c4b907450f5e0036f5, type: 3}
+  m_PrefabInstance: {fileID: 6906851963818584476}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &18875440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 18875439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18f664bdaa00846ada4371f0de6102ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputSound1: event:/Levels/CurtainsOpen
+  inputSound2: event:/Levels/CurtainsClose
+  CurtainsController: {fileID: 0}
 --- !u!1001 &30195208
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12692,6 +12712,14 @@ PrefabInstance:
       propertyPath: respawn
       value: 
       objectReference: {fileID: 1345812294}
+    - target: {fileID: 2405365216902023890, guid: d9405fc867169f84b88011cd45f97a16, type: 3}
+      propertyPath: inputSound1
+      value: event:/Levels/CurtainsOpen
+      objectReference: {fileID: 0}
+    - target: {fileID: 2405365216902023890, guid: d9405fc867169f84b88011cd45f97a16, type: 3}
+      propertyPath: inputSound2
+      value: event:/Levels/CurtainsClose
+      objectReference: {fileID: 0}
     - target: {fileID: 2405365218153950038, guid: d9405fc867169f84b88011cd45f97a16, type: 3}
       propertyPath: respawn
       value: 
@@ -12769,6 +12797,14 @@ PrefabInstance:
       propertyPath: respawn
       value: 
       objectReference: {fileID: 426174746}
+    - target: {fileID: 5863380571716775571, guid: ba6ea8808de495c4ab46039032e5746a, type: 3}
+      propertyPath: inputSound1
+      value: event:/Levels/CurtainsOpen
+      objectReference: {fileID: 0}
+    - target: {fileID: 5863380571716775571, guid: ba6ea8808de495c4ab46039032e5746a, type: 3}
+      propertyPath: inputSound2
+      value: event:/Levels/CurtainsClose
+      objectReference: {fileID: 0}
     - target: {fileID: 5863380571858625998, guid: ba6ea8808de495c4ab46039032e5746a, type: 3}
       propertyPath: m_Name
       value: Step 2
@@ -12882,6 +12918,14 @@ PrefabInstance:
       propertyPath: respawn
       value: 
       objectReference: {fileID: 274457316}
+    - target: {fileID: 6906851963511400954, guid: 83992cf4b8ad73c4b907450f5e0036f5, type: 3}
+      propertyPath: inputSound1
+      value: event:/Levels/CurtainsOpen
+      objectReference: {fileID: 0}
+    - target: {fileID: 6906851963511400954, guid: 83992cf4b8ad73c4b907450f5e0036f5, type: 3}
+      propertyPath: inputSound2
+      value: event:/Levels/CurtainsClose
+      objectReference: {fileID: 0}
     - target: {fileID: 6906851963511400954, guid: 83992cf4b8ad73c4b907450f5e0036f5, type: 3}
       propertyPath: InitialDelay
       value: 0
