@@ -6,10 +6,13 @@ public class CurtainsController : MonoBehaviour
 {
     public GameObject   CurtainsOpen;
     public GameObject   CurtainsClosed;
-    public BoxCollider  lightCollider;
+
     public GameObject   Player;
     public Renderer[] PlayerRenderers;
     public GameObject respawn;
+
+    [Range(1f,5f)] public float OpenFor = 3f;
+    [Range(1f, 5f)] public float ClosedFor = 3f;
 
     public Vector4 PlayerRGBA   = new Vector4(1,1,1,1); 
     public Vector4 BurningRGBA  = new Vector4(255 , 165 , 0 , 255);
@@ -23,7 +26,7 @@ public class CurtainsController : MonoBehaviour
     // Start is called before the first frame update
     void OnEnable()
     {
-        lightCollider = GetComponentInChildren<BoxCollider>(CurtainsOpen);
+       
         StartCoroutine(SwapCurtains());
         PlayerRenderers = Player.GetComponentsInChildren<Renderer>();
         CurrentRGBA = PlayerRGBA;
@@ -121,7 +124,15 @@ public class CurtainsController : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(3);
+            if (flipped)
+            {
+                yield return new WaitForSeconds(OpenFor);
+            }
+            else
+            {
+                yield return new WaitForSeconds(ClosedFor);
+            }
+            
             
             //Debug.Log("Ding " + count);
             //count++;
