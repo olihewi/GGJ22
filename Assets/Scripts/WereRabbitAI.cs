@@ -20,15 +20,15 @@ public class WereRabbitAI : MonoBehaviour
     private bool moving = true;
 
     private Rigidbody2D rb;
-    private SpriteRenderer sprite;
     private Transform target;
     [SerializeField] private Transform detectionRange;
     [HideInInspector] public bool caught = false;
+    private Animator[] animators;
     
     void Start()
     {
+        animators = GetComponentsInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        sprite = GetComponentInChildren<SpriteRenderer>();
     }
 
     void Update()
@@ -38,6 +38,10 @@ public class WereRabbitAI : MonoBehaviour
             if (patrolRoute.Count > 0 && moving) Patrol();
         }
         detectionRange.rotation = Quaternion.Euler(0.0F,0.0F, Vector2.SignedAngle(Vector2.up, lookDirection));
+        foreach (Animator animator in animators)
+        {
+            animator.SetFloat("Velocity",Mathf.MoveTowards(animator.GetFloat("Velocity"),rb.velocity.magnitude,4.0F * Time.deltaTime));
+        }
     }
 
     private void ResetPatrol()
@@ -77,7 +81,7 @@ public class WereRabbitAI : MonoBehaviour
         if (caught) return;
         rb.velocity = Vector2.MoveTowards(Vector2.zero, patrolRoute[currentRouteId] - new Vector2(transform.position.x, transform.position.y), moveSpeed * Time.deltaTime) / Time.deltaTime;
         lookDirection = rb.velocity.normalized;
-        sprite.flipX = lookDirection.x > 0.0F;
+        animators[0].transform.localScale = new Vector3(lookDirection.x > 0.0F ? -1.0F : 1.0F,1.0F,1.0F);
         if ((new Vector2(transform.position.x, transform.position.y) - patrolRoute[currentRouteId]).magnitude < 0.1F)
         {
             currentRouteId = (currentRouteId + 1) % patrolRoute.Count;
@@ -90,7 +94,7 @@ public class WereRabbitAI : MonoBehaviour
         if (caught) return;
         rb.velocity = Vector2.MoveTowards(Vector2.zero, target.position - transform.position, moveSpeed * chaseSpeedMultiplier * Time.deltaTime) / Time.deltaTime;
         lookDirection = rb.velocity.normalized;
-        sprite.flipX = lookDirection.x > 0.0F;
+        animators[0].transform.localScale = new Vector3(lookDirection.x > 0.0F ? -1.0F : 1.0F,1.0F,1.0F);
     }
 
     private IEnumerator TimeOut(float _seconds)
