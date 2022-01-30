@@ -11,8 +11,10 @@ public class CurtainsController : MonoBehaviour
     public Renderer[] PlayerRenderers;
     public GameObject respawn;
 
-    [Range(1f,5f)] public float OpenFor = 3f;
-    [Range(1f, 5f)] public float ClosedFor = 3f;
+    [Range(0f, 5f)]     public float InitialDelay = 30f;
+    [Range(1f,5f)]      public float OpenFor = 3f;
+    [Range(1f, 5f)]     public float ClosedFor = 3f;
+    [Range(.5f, 4f)]    public float BurnSpeed = 2.3f;
 
     public Vector4 PlayerRGBA   = new Vector4(1,1,1,1); 
     public Vector4 BurningRGBA  = new Vector4(255 , 165 , 0 , 255);
@@ -27,7 +29,7 @@ public class CurtainsController : MonoBehaviour
     void OnEnable()
     {
        
-        StartCoroutine(SwapCurtains());
+        StartCoroutine(OpenAndCloseCurtains());
         
         CurrentRGBA = PlayerRGBA;
     }
@@ -133,7 +135,7 @@ public class CurtainsController : MonoBehaviour
         flipped = !flipped;
     }
 
-    IEnumerator SwapCurtains()
+    IEnumerator OpenAndCloseCurtains()
     {
         while (true)
         {
@@ -155,7 +157,7 @@ public class CurtainsController : MonoBehaviour
     IEnumerator Burning()
     {
 
-        yield return new WaitForSeconds(2.3f);
+        yield return new WaitForSeconds(BurnSpeed);
 
         if (burning)
         {
