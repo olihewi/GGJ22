@@ -1674,7 +1674,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurtainsOpen: {fileID: 1275317923}
   CurtainsClosed: {fileID: 933250067}
-  Player: {fileID: 327299113}
+  Player: {fileID: 0}
   PlayerRenderers: []
   respawn: {fileID: 274457316}
   OpenFor: 3
@@ -1787,6 +1787,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7213226883827708675, guid: 6346fbc83eaa45c4da3852408598d967, type: 3}
   m_PrefabInstance: {fileID: 1054074256}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &327299114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 327299113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55c003a89841545ac806fc6935758234, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputSound: event:/Player/FootstepsCarpet
+  walkingSpeed: 0.5
 --- !u!4 &330439723 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2894229066911275530, guid: 83c2364e1d678e040a0642c25562fc28, type: 3}
@@ -7020,7 +7034,7 @@ GameObject:
   - component: {fileID: 1185976160}
   - component: {fileID: 1185976159}
   m_Layer: 0
-  m_Name: curtains L (1)
+  m_Name: curtains R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7039,7 +7053,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 13.042499, y: -0.4389789}
+  m_Offset: {x: 13.042499, y: -2.8430674}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -7050,7 +7064,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 29.4, y: 5.38345}
+  m_Size: {x: 29.4, y: 6.168098}
   m_EdgeRadius: 0
 --- !u!114 &1185976160
 MonoBehaviour:
@@ -7066,7 +7080,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurtainsOpen: {fileID: 447033482}
   CurtainsClosed: {fileID: 490916748}
-  Player: {fileID: 327299113}
+  Player: {fileID: 0}
   PlayerRenderers: []
   respawn: {fileID: 274457316}
   OpenFor: 3
@@ -7299,7 +7313,7 @@ GameObject:
   - component: {fileID: 1217743294}
   - component: {fileID: 1217743293}
   m_Layer: 0
-  m_Name: curtains R
+  m_Name: curtains
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7318,7 +7332,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 13.042499, y: -0.4389789}
+  m_Offset: {x: 13.042499, y: 0.14708602}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -7329,7 +7343,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 29.4, y: 5.38345}
+  m_Size: {x: 29.4, y: 6.55558}
   m_EdgeRadius: 0
 --- !u!114 &1217743294
 MonoBehaviour:
@@ -7345,7 +7359,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurtainsOpen: {fileID: 2142320266}
   CurtainsClosed: {fileID: 597592706}
-  Player: {fileID: 327299113}
+  Player: {fileID: 0}
   PlayerRenderers: []
   respawn: {fileID: 274457316}
   OpenFor: 1.96
@@ -9229,6 +9243,60 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2894229066911275530, guid: 83c2364e1d678e040a0642c25562fc28, type: 3}
   m_PrefabInstance: {fileID: 2028852620}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1550793491
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1550793493}
+  - component: {fileID: 1550793492}
+  m_Layer: 0
+  m_Name: Music 3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1550793492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550793491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/Music/Bedroom
+  PlayEvent: 11
+  StopEvent: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
+--- !u!4 &1550793493
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550793491}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.2523641, y: 4.8478365, z: -1.2373354}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1587419197 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2894229066911275530, guid: 83c2364e1d678e040a0642c25562fc28, type: 3}
@@ -11241,7 +11309,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurtainsOpen: {fileID: 1455218565}
   CurtainsClosed: {fileID: 703718172}
-  Player: {fileID: 327299113}
+  Player: {fileID: 0}
   PlayerRenderers: []
   respawn: {fileID: 274457316}
   OpenFor: 1.97
