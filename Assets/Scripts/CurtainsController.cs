@@ -28,7 +28,7 @@ public class CurtainsController : MonoBehaviour
     {
        
         StartCoroutine(SwapCurtains());
-        PlayerRenderers = Player.GetComponentsInChildren<Renderer>();
+        
         CurrentRGBA = PlayerRGBA;
     }
 
@@ -51,15 +51,14 @@ public class CurtainsController : MonoBehaviour
 
         }
 
-        for (int i = 0; i < PlayerRenderers.Length; i++)
-        {
-            PlayerRenderers[i].material.color = CurrentRGBA;
-        }
+        
+
         if (burning && count == 0)
         {
             count++;
             StartCoroutine(Burning());
         }
+
         /*for (int i = 0; i < PlayerRenderers.Length; i++)
         {
             CurrentRGBA = Color.Lerp(CurrentRGBA, PlayerRGBA, Time.deltaTime * .5f);
@@ -67,9 +66,21 @@ public class CurtainsController : MonoBehaviour
         }*/
 
     }
+    private void LateUpdate()
+    {
+        if (isOccupied)
+        {
+            for (int i = 0; i < PlayerRenderers.Length; i++)
+            {
+                PlayerRenderers[i].material.color = CurrentRGBA;
+            }
+        }
+        
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        initPlayer(collision);
         isOccupied = true;
         if (isOccupied && burning)
         {
@@ -96,6 +107,8 @@ public class CurtainsController : MonoBehaviour
     }*/
     private void OnTriggerExit2D(Collider2D collision)
     {
+
+        removePlayer();
         isOccupied = false;
         Debug.Log("left");
         burning = false;
@@ -154,6 +167,20 @@ public class CurtainsController : MonoBehaviour
         {
             yield return null;
         }
+    }
+    void initPlayer(Collider2D collision)
+    {
+        Player = collision.gameObject;
+        PlayerRenderers = Player.GetComponentsInChildren<Renderer>();
+    }
+    void removePlayer()
+    {
+        for (int i = 0; i < PlayerRenderers.Length; i++)
+        {
+            PlayerRenderers[i].material.color = Color.white;
+            PlayerRenderers[i] = null;
+        }
+        Player = null;
     }
 }
 
