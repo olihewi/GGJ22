@@ -145,9 +145,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18f664bdaa00846ada4371f0de6102ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputSound1: event:/Levels/CurtainsOpen
-  inputSound2: event:/Levels/CurtainsClose
-  CurtainsController: {fileID: 0}
 --- !u!1001 &30195208
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8330,8 +8327,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CollisionTag: 
   Event: event:/Music/Bedroom
-  PlayEvent: 11
-  StopEvent: 12
+  PlayEvent: 1
+  StopEvent: 2
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
